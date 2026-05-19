@@ -85,7 +85,7 @@ cmake .. -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH="C:/Qt/6.x.x/msvc2019_64
 cmake --build . --config Release
 
 # Run the application
-./bin/Release/FFmpegComparisonTool.exe
+./bin/Release/VidMetric.exe
 ```
 
 ### Linux

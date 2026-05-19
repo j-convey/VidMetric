@@ -14,23 +14,23 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 # Source files
 set(SOURCES
     src/main.cpp
-    src/MainWindow.cpp
-    src/HistoryTab.cpp
-    src/PredictTab.cpp
-    src/VerifyTab.cpp
-    src/VideoUtils.cpp
-    src/AbAv1Job.cpp
-    src/FfmpegJob.cpp
+    src/ui/MainWindow.cpp
+    src/ui/tabs/HistoryTab.cpp
+    src/ui/tabs/PredictTab.cpp
+    src/ui/tabs/VerifyTab.cpp
+    src/utils/VideoUtils.cpp
+    src/jobs/AbAv1Job.cpp
+    src/jobs/FfmpegJob.cpp
 )
 
 set(HEADERS
-    src/MainWindow.h
-    src/HistoryTab.h
-    src/PredictTab.h
-    src/VerifyTab.h
-    src/VideoUtils.h
-    src/AbAv1Job.h
-    src/FfmpegJob.h
+    src/ui/MainWindow.h
+    src/ui/tabs/HistoryTab.h
+    src/ui/tabs/PredictTab.h
+    src/ui/tabs/VerifyTab.h
+    src/utils/VideoUtils.h
+    src/jobs/AbAv1Job.h
+    src/jobs/FfmpegJob.h
 )
 
 set(RESOURCES
@@ -51,6 +51,15 @@ endif()
 
 # Link Qt libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
+
+# Include directories (allows flat includes to still work safely after reorganizing)
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/ui
+    ${CMAKE_SOURCE_DIR}/src/ui/tabs
+    ${CMAKE_SOURCE_DIR}/src/utils
+    ${CMAKE_SOURCE_DIR}/src/jobs
+)
 
 # Set output directory
 set_target_properties(${PROJECT_NAME} PROPERTIES
